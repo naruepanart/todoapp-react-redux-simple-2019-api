@@ -1,4 +1,4 @@
-import axios from "axios";
+/* import axios from "axios";
 
 export const fetchProfile = () => async dispatch => {
   const res = await axios.get("http://localhost:3001/profile");
@@ -13,3 +13,4 @@ export const deleteProfile = id => async dispatch => {
   await axios.delete(`http://localhost:3001/profile/${id}`);
   dispatch({ type: "DELETE_PROFILE", payload: id });
 };
+ */
