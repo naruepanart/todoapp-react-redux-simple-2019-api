@@ -11,9 +11,9 @@ const MainReducer = (state = initialState, action) => {
       return { ...state, isLoading: true };
     case "FINISH_LOADING":
       return { ...state, isLoading: false };
-    case "BEFORE_EDIT":
+    case "EDIT_TRUE":
       return { ...state, isEdit: true };
-    case "FINISH_EDIT":
+    case "EDIT_FALSE":
       return { ...state, isEdit: false };
     case "FETCH_PROFILE":
       return { ...state, profile: action.payload };
