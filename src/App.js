@@ -13,16 +13,17 @@ export default function App() {
     await dispatch({ type: "FETCH_PROFILE", payload: res.data });
   };
 
-  const editForm = async id => {
+  const editForm = async (id, firstname) => {
     await dispatch({ type: "EDIT_TRUE" });
-    await dispatch({ type: "FIRST_NAME", payload: id });
+    const user = {
+      firstname: firstname
+    };
+    await axios.put(`http://localhost:3001/profile/${id}`, user);
   };
 
   const handleSubmit = async e => {
     e.preventDefault();
-    if (isEdit) {
-      editForm();
-    }
+
     const user = {
       firstname: firstname
     };
@@ -69,7 +70,7 @@ export default function App() {
             <ol key={id}>
               <button onClick={() => deleteForm(a.id)}>X</button>
               {a.firstname}
-              <button onClick={() => editForm(a.firstname)}>Edit</button>
+              <button onClick={() => editForm(a.id, a.firstname)}>Edit</button>
             </ol>
           </div>
         );
