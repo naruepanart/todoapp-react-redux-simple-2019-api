@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import React, { useEffect } from "react";
 
-import { firstName, fetchProfile, deleteProfile,postProfile } from "./redux/actions";
+import { fetchProfile, deleteProfile, postProfile } from "./redux/actions";
 
 export default function App() {
   const profile = useSelector(state => state.profile);
@@ -45,7 +45,9 @@ export default function App() {
           <input
             type="text"
             value={firstname}
-            onChange={e => dispatch(firstName(e))}
+            onChange={e =>
+              dispatch({ type: "FIRST_NAME", payload: e.target.value })
+            }
             placeholder="Enter Firstname"
             required
           />
