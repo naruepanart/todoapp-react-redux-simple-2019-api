@@ -29,7 +29,7 @@ const MainReducer = (state = initialState, action) => {
         ...state,
         profile: state.profile.map(todo => {
           if (action.payload === todo.id) {
-            todo.name = action.name;
+            todo.firstname = action.firstname;
           }
           return todo;
         })
