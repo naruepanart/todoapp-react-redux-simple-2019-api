@@ -1,15 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 import React, { useEffect } from "react";
 
-import {
-  firstName,
-  fetchProfile,
-  deleteProfile,
-  postProfile
-} from "./redux/actions";
+import { firstName, fetchProfile, deleteProfile,postProfile } from "./redux/actions";
 
 export default function App() {
-  const count = useSelector(state => state.count);
   const profile = useSelector(state => state.profile);
   const firstname = useSelector(state => state.firstname);
   const dispatch = useDispatch();
@@ -20,7 +14,6 @@ export default function App() {
 
   const handleSubmit = async e => {
     e.preventDefault();
-
     const user = {
       firstname: firstname
     };
@@ -45,8 +38,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <h1>Todo APP React - Redux 2019</h1>
-      <p>Count: {count}</p>
+      <h1>Simple React - Redux 2019</h1>
       <form onSubmit={handleSubmit}>
         <label>
           Firstname :

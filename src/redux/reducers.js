@@ -1,5 +1,4 @@
 const initialState = {
-  count: 100,
   profile: [],
   firstname: ""
 };
