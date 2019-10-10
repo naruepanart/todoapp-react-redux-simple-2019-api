@@ -2,7 +2,7 @@ const initialState = {
   profile: [],
   firstname: "",
   isLoading: false,
-  isEdit: false,
+  isEdit: false
 };
 
 const MainReducer = (state = initialState, action) => {
