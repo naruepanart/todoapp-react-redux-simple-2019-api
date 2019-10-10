@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import React, { useEffect } from "react";
-
-import { fetchProfile, deleteProfile, postProfile } from "./redux/actions";
+import axios from "axios";
 
 export default function App() {
   const profile = useSelector(state => state.profile);
@@ -9,7 +8,8 @@ export default function App() {
   const dispatch = useDispatch();
 
   const fetchData = async () => {
-    await dispatch(fetchProfile());
+    const res = await axios.get("http://localhost:3001/profile");
+    await dispatch({ type: "FETCH_PROFILE", payload: res.data });
   };
 
   const handleSubmit = async e => {
@@ -17,18 +17,16 @@ export default function App() {
     const user = {
       firstname: firstname
     };
-    await dispatch(postProfile(user));
+    const res = await axios.post("http://localhost:3001/profile", user);
+    await dispatch({ type: "POST_PROFILE", payload: res.data });
     await dispatch({ type: "FORM_RESET", payload: "" });
-    setTimeout(() => {
-      fetchData();
-    }, 1000);
+    await fetchData();
   };
 
   const deleteForm = async id => {
-    await dispatch(deleteProfile(id));
-    setTimeout(() => {
-      fetchData();
-    }, 1000);
+    await axios.delete(`http://localhost:3001/profile/${id}`);
+    await dispatch({ type: "DELETE_PROFILE", payload: id });
+    await fetchData();
   };
 
   useEffect(() => {
