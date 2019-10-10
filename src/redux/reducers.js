@@ -7,9 +7,9 @@ const initialState = {
 
 const MainReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "BEFORE_LOADING":
+    case "LOADING_TRUE":
       return { ...state, isLoading: true };
-    case "FINISH_LOADING":
+    case "LOADING_FALSE":
       return { ...state, isLoading: false };
     case "EDIT_TRUE":
       return { ...state, isEdit: true };
