@@ -1,13 +1,5 @@
 import axios from "axios";
 
-export const firstName = e => async dispatch => {
-  dispatch({ type: "FIRST_NAME", payload: e.target.value });
-};
-
-export const reSetForm = () => async dispatch => {
-  dispatch({ type: "FORM_RESET", payload: "" });
-};
-
 export const fetchProfile = () => async dispatch => {
   const res = await axios.get("http://localhost:3001/profile");
   dispatch({ type: "FETCH_PROFILE", payload: res.data });
