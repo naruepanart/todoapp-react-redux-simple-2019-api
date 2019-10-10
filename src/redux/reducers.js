@@ -1,10 +1,20 @@
 const initialState = {
   profile: [],
-  firstname: ""
+  firstname: "",
+  isLoading: false,
+  isEdit: false
 };
 
 const MainReducer = (state = initialState, action) => {
   switch (action.type) {
+    case "BEFORE_LOADING":
+      return { ...state, isLoading: true };
+    case "FINISH_LOADING":
+      return { ...state, isLoading: false };
+    case "BEFORE_EDIT":
+      return { ...state, isEdit: true };
+    case "FINISH_EDIT":
+      return { ...state, isEdit: false };
     case "FETCH_PROFILE":
       return { ...state, profile: action.payload };
     case "POST_PROFILE":
