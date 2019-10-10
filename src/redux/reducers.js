@@ -2,7 +2,7 @@ const initialState = {
   profile: [],
   firstname: "",
   isLoading: false,
-  isEdit: false
+  isEdit: false,
 };
 
 const MainReducer = (state = initialState, action) => {
@@ -23,6 +23,16 @@ const MainReducer = (state = initialState, action) => {
       return {
         ...state,
         profile: state.profile.filter(post => post._id !== action.payload)
+      };
+    case "EDIT_PROFILE":
+      return {
+        ...state,
+        profile: state.profile.map(todo => {
+          if (action.payload === todo.id) {
+            todo.name = action.name;
+          }
+          return todo;
+        })
       };
     case "FIRST_NAME":
       return { ...state, firstname: action.payload };
