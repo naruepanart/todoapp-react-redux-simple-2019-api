@@ -27,11 +27,11 @@ const MainReducer = (state = initialState, action) => {
     case "EDIT_PROFILE":
       return {
         ...state,
-        profile: state.profile.map(todo => {
-          if (action.payload === todo.id) {
-            todo.firstname = action.firstname;
+        profile: state.profile.map(a => {
+          if (action.payload === a.id) {
+            a.firstname = action.firstname;
           }
-          return todo;
+          return a;
         })
       };
     case "FIRST_NAME":
