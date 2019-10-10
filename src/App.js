@@ -13,9 +13,9 @@ export default function App() {
     await dispatch({ type: "FETCH_PROFILE", payload: res.data });
   };
 
-  const editForm = id => {
-    dispatch({ type: "EDIT_TRUE" });
-    dispatch({ type: "FIRST_NAME", payload: id, });
+  const editForm = async id => {
+    await dispatch({ type: "EDIT_TRUE" });
+    await dispatch({ type: "FIRST_NAME", payload: id });
   };
 
   const handleSubmit = async e => {
