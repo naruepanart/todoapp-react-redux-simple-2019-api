@@ -13,8 +13,16 @@ export default function App() {
     await dispatch({ type: "FETCH_PROFILE", payload: res.data });
   };
 
+  const editForm = id => {
+    dispatch({ type: "EDIT_TRUE" });
+    dispatch({ type: "FIRST_NAME", payload: id, });
+  };
+
   const handleSubmit = async e => {
     e.preventDefault();
+    if (isEdit) {
+      editForm();
+    }
     const user = {
       firstname: firstname
     };
@@ -22,6 +30,7 @@ export default function App() {
     await dispatch({ type: "POST_PROFILE", payload: res.data });
     await dispatch({ type: "FORM_RESET", payload: "" });
     await fetchData();
+    await dispatch({ type: "EDIT_FALSE" });
   };
 
   const deleteForm = async id => {
@@ -59,7 +68,7 @@ export default function App() {
             <ol key={id}>
               <button onClick={() => deleteForm(a.id)}>X</button>
               {a.firstname}
-              <button onClick={() => deleteForm(a.id)}>Edit</button>
+              <button onClick={() => editForm(a.firstname)}>Edit</button>
             </ol>
           </div>
         );
