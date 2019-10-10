@@ -46,7 +46,8 @@ export default function App() {
 
   return (
     <div className="App">
-      <h1>Simple React - Redux 2019</h1>
+      <h1>Head</h1>
+      <hr></hr>
       <form onSubmit={handleSubmit}>
         <label>
           Firstname :
