@@ -24,7 +24,7 @@ export default function App() {
     }, 1000);
   };
 
-  const deleteformData = async id => {
+  const deleteForm = async id => {
     await dispatch(deleteProfile(id));
     setTimeout(() => {
       fetchData();
@@ -58,7 +58,7 @@ export default function App() {
         return (
           <div>
             <ol key={id}>
-              <button onClick={() => deleteformData(a.id)}>X</button>
+              <button onClick={() => deleteForm(a.id)}>X</button>
               {a.firstname}
             </ol>
           </div>
