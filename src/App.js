@@ -5,6 +5,7 @@ import axios from "axios";
 export default function App() {
   const profile = useSelector(state => state.profile);
   const firstname = useSelector(state => state.firstname);
+  const isEdit = useSelector(state => state.isEdit);
   const dispatch = useDispatch();
 
   const fetchData = async () => {
@@ -50,7 +51,7 @@ export default function App() {
             required
           />
         </label>
-        <button>Send</button>
+        <button>{isEdit ? <p>Update</p> : <p>Submit</p>}</button>
       </form>
       {profile.map((a, id) => {
         return (
@@ -58,6 +59,7 @@ export default function App() {
             <ol key={id}>
               <button onClick={() => deleteForm(a.id)}>X</button>
               {a.firstname}
+              <button onClick={() => deleteForm(a.id)}>Edit</button>
             </ol>
           </div>
         );
